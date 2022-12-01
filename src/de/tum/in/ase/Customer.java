@@ -2,7 +2,7 @@ package de.tum.in.ase;
 
 public class Customer {
     //TODO Add attribute TsInBasket
-    private Stack<Product> ProductsInBasket;
+    private Stack<Product> productsInBasket;
     private String name;
     private double money;
 
@@ -23,8 +23,8 @@ public class Customer {
         return money;
     }
 
-    public Stack<Product> getProductsInBasket() {
-        return ProductsInBasket;
+    public Stack<Product> getproductsInBasket() {
+        return productsInBasket;
     }
 
     //TODO implement methods
@@ -33,11 +33,11 @@ public class Customer {
     }
 
     public void addProductToBasket(Product product) {
-        ProductsInBasket.push(product);
+        productsInBasket.push(product);
     }
     public void placeAllProductsOnBand(Queue<Product> band) {
-        while (!ProductsInBasket.isEmpty()) {
-            Product product = ProductsInBasket.pop();
+        while (!productsInBasket.isEmpty()) {
+            Product product = productsInBasket.pop();
             band.enqueue(product);
         }
     }
@@ -72,6 +72,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer: " + name + ", money: " + money + "\n" + ProductsInBasket;
+        return "Customer: " + name + ", money: " + money + "\n" + productsInBasket;
     }
 }
