@@ -23,7 +23,7 @@ public class Customer {
         return money;
     }
 
-    public Stack<Product> getproductsInBasket() {
+    public Stack<Product> getProductsInBasket() {
         return productsInBasket;
     }
 

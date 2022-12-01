@@ -2,17 +2,17 @@ package de.tum.in.ase;
 
 public class Checkout {
 
-    private LinkedQueue<Customer> customers;
-    private LinkedQueue<Product> bandBeforeCashier;
-    private LinkedQueue<Product> bandAfterCashier;
+    private Queue<Customer> customers;
+    private Queue<Product> bandBeforeCashier;
+    private Queue<Product> bandAfterCashier;
 
-    public Checkout(LinkedQueue<Customer> customers, LinkedQueue<Product> bandBeforeCashier, LinkedQueue<Product> bandAfterCashier) {
-        this.customers = customers;
-        this.bandBeforeCashier = bandBeforeCashier;
-        this.bandAfterCashier = bandAfterCashier;
+    public Checkout() {
+        this.customers = new LinkedQueue<>();
+        this.bandBeforeCashier = new LinkedQueue<>();
+        this.bandAfterCashier = new LinkedQueue<>();
     }
 
-    public LinkedQueue<Customer> getCustomers() {
+    public Queue<Customer> getCustomers() {
         return customers;
     }
 
@@ -20,7 +20,7 @@ public class Checkout {
         this.customers = customers;
     }
 
-    public LinkedQueue<Product> getBandBeforeCashier() {
+    public Queue<Product> getBandBeforeCashier() {
         return bandBeforeCashier;
     }
 
@@ -28,7 +28,7 @@ public class Checkout {
         this.bandBeforeCashier = bandBeforeCashier;
     }
 
-    public LinkedQueue<Product> getBandAfterCashier() {
+    public Queue<Product> getBandAfterCashier() {
         return bandAfterCashier;
     }
 
@@ -40,12 +40,13 @@ public class Checkout {
         return customers.size();
     }
 
+//    TODO: java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "o" is null
     public void serveNextCustomer() {
         if (customerQueueLength() == 0) {
             throw new UnsupportedOperationException();
         } else {
             Customer customer = customers.dequeue();
-            Stack products = customer.getproductsInBasket();
+            Stack products = customer.getProductsInBasket();
             customer.placeAllProductsOnBand(bandAfterCashier);
 //            TODO: only put the products customer put (bandAfter - bandBefore)
             customer.takeAllProductsFromBand(bandAfterCashier);

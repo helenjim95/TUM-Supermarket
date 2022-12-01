@@ -8,6 +8,10 @@ public class TUMSupermarket {
             throw new IllegalArgumentException();
         } else {
             this.checkouts = new Checkout[numberOfCheckouts];
+            Checkout checkout = new Checkout();
+            for (int i = 0; i < checkouts.length; i++) {
+                this.checkouts[i] = checkout;
+            }
         }
     }
 
