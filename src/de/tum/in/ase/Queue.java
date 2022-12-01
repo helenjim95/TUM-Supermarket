@@ -1,8 +1,8 @@
 package de.tum.in.ase;
 
-public interface Queue<Product> extends DataStructure {
+public interface Queue<T> extends DataStructure {
 
-    void enqueue(Product t);
+    void enqueue(T t);
 
-    Product dequeue();
+    T dequeue();
 }

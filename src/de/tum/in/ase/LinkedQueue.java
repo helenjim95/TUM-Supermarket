@@ -1,9 +1,9 @@
 package de.tum.in.ase;
 
 
-public class LinkedQueue<Product> implements Queue<Product> {
-    private List<Product> first;
-    private List<Product> last;
+public class LinkedQueue<T> implements Queue<T> {
+    private List<T> first;
+    private List<T> last;
 
     @Override
     public boolean isEmpty() {
@@ -18,7 +18,7 @@ public class LinkedQueue<Product> implements Queue<Product> {
     }
 
     @Override
-    public void enqueue(Product t) {
+    public void enqueue(T t) {
         if (first == null) {
             first = new List<>(t);
             last = first;
@@ -29,10 +29,10 @@ public class LinkedQueue<Product> implements Queue<Product> {
     }
 
     @Override
-    public Product dequeue() {
+    public T dequeue() {
         if (first == null)
             return null;
-        Product t = first.getInfo();
+        T t = first.getInfo();
         if (first == last)
             last = null;
         first = first.getNext();

@@ -1,19 +1,19 @@
 package de.tum.in.ase;
 
-public class LinkedStack<Product> implements Stack<Product> {
+public class LinkedStack<T> implements Stack<T> {
 
-    private List<Product> first = null;
+    private List<T> first = null;
 
     @Override
-    public void push(Product t) {
+    public void push(T t) {
         first = new List<>(t, first);
     }
 
     @Override
-    public Product pop() {
+    public T pop() {
         if (first == null)
             return null;
-        Product info = first.getInfo();
+        T info = first.getInfo();
         first = first.getNext();
         return info;
     }

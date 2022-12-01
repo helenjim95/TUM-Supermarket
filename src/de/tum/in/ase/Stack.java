@@ -1,8 +1,8 @@
 package de.tum.in.ase;
 
-public interface Stack<Product> extends DataStructure {
+public interface Stack<T> extends DataStructure {
 
-    void push(Product t);
+    void push(T t);
 
-    Product pop();
+    T pop();
 }

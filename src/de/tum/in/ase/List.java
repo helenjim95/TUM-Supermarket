@@ -1,19 +1,19 @@
 package de.tum.in.ase;
 
-public class List<Product> {
-    public Product info;
-    public List<Product> next;
+public class List<T> {
+    private final T info;
+    private List<T> next;
 
-    public List(Product info) {
+    public List(T info) {
         this(info, null);
     }
 
-    public List(Product info, List<Product> next) {
+    public List(T info, List<T> next) {
         this.info = info;
         this.next = next;
     }
 
-    public void insert(Product x) {
+    public void insert(T x) {
         next = new List<>(x, next);
     }
 
@@ -23,17 +23,17 @@ public class List<Product> {
         }
     }
 
-    public Product getInfo() {
+    public T getInfo() {
         return info;
     }
 
-    public List<Product> getNext() {
+    public List<T> getNext() {
         return next;
     }
 
     public int length() {
         int result = 1;
-        for (List<Product> temp = next; temp != null; temp = temp.next) {
+        for (List<T> temp = next; temp != null; temp = temp.next) {
             result++;
         }
         return result;
@@ -42,7 +42,7 @@ public class List<Product> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[" + info);
-        for (List<Product> temp = next; temp != null; temp = temp.next) {
+        for (List<T> temp = next; temp != null; temp = temp.next) {
             result.append(", ").append(temp.info);
         }
         return result + "]";
