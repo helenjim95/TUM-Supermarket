@@ -65,7 +65,7 @@ public class Customer {
                 }
             }
             Checkout checkoutWithShortestQueue = supermarket.getCheckoutWithSmallestQueue();
-            LinkedQueue<Customer> customers = checkoutWithShortestQueue.getCustomers();
+            Queue<Customer> customers = checkoutWithShortestQueue.getCustomers();
             customers.enqueue(this);
         }
     }
