@@ -60,4 +60,7 @@ public class Checkout {
     }
 
 //    TODO: add toString method
+    public String toString() {
+        return super.toString();
+    }
 }
