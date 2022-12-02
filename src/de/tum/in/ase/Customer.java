@@ -12,6 +12,7 @@ public class Customer {
         } else {
             this.name = name;
             this.money = money;
+            this.productsInBasket = new LinkedStack<>();
         }
     }
 
@@ -33,7 +34,9 @@ public class Customer {
 
     //    TODO:  java.lang.NullPointerException: Cannot invoke "de.tum.in.ase.Stack.push(Object)" because "this.productsInBasket" is null
     public void addProductToBasket(Product product) {
-        productsInBasket.push(product);
+        if (productsInBasket != null) {
+            productsInBasket.push(product);
+        }
     }
     public void placeAllProductsOnBand(Queue<Product> band) {
         while (!productsInBasket.isEmpty()) {
@@ -60,7 +63,7 @@ public class Customer {
     }
     public void goToCheckout(TUMSupermarket supermarket) throws IllegalArgumentException {
         Checkout[] checkouts = supermarket.getCheckouts();
-        if (checkouts == null) {
+        if (supermarket == null || checkouts == null) {
             throw new IllegalArgumentException();
         } else {
             for (Checkout checkout : checkouts) {
