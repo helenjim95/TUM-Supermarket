@@ -55,10 +55,10 @@ public class Customer {
         }
     }
     public void pay(double amount) throws UnsupportedOperationException {
-        if (amount < 0 || money < amount) {
+        if (amount < 0 || this.money < amount) {
             throw new UnsupportedOperationException();
         } else {
-            money -= amount;
+            this.money -= amount;
         }
     }
     public void goToCheckout(TUMSupermarket supermarket) throws IllegalArgumentException {
