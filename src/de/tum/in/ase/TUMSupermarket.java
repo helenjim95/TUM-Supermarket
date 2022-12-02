@@ -36,6 +36,7 @@ public class TUMSupermarket {
         if (index < 0 || index >= checkouts.length) {
             throw new IllegalArgumentException();
         } else {
+
 //            the size of the Checkout array must be decreased by 1
 //            (-> there has to be no null-value in it) and
 //            it should contain all the other Checkout-objects in the same order as before.

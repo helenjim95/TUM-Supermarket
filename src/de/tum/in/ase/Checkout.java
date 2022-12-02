@@ -55,7 +55,11 @@ public class Checkout {
                 Product product = (Product) products.pop();
                 totalPrice += product.getPrice();
             }
-            customer.pay(totalPrice);
+            try {
+                customer.pay(totalPrice);
+            } catch (UnsupportedOperationException e) {
+                System.out.println("Customer has insufficient fund");
+            }
         }
     }
 
