@@ -36,9 +36,25 @@ public class TUMSupermarket {
         if (index < 0 || index >= this.checkouts.length) {
             throw new IllegalArgumentException();
         } else {
-            for (int i = index; i < this.checkouts.length - 1; i++) {
-                this.checkouts[i] = this.checkouts[i + 1];
+//            for (int i = index; i < this.checkouts.length - 1; i++) {
+//                this.checkouts[i] = this.checkouts[i + 1];
+//            }
+
+            int count =0;
+            for(int i = 0; i < checkouts.length; i++){
+                if(i == index){
+                    count++;
+
+                    // shifting elements
+                    for(int k = i; k < checkouts.length - 1; k++){
+                        checkouts[k] = checkouts[k+1];
+                    }
+                    i--;
+                    // break;
+                }
             }
+
+
 //            the size of the Checkout array must be decreased by 1
 //            (-> there has to be no null-value in it) and
 //            it should contain all the other Checkout-objects in the same order as before.
