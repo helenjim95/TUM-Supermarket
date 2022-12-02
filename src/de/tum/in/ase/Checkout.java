@@ -58,4 +58,6 @@ public class Checkout {
             customer.pay(totalPrice);
         }
     }
+
+//    TODO: add toString method
 }

@@ -32,19 +32,24 @@ public class Customer {
         return money > 0;
     }
 
+    //    TODO:  java.lang.NullPointerException: Cannot invoke "de.tum.in.ase.Stack.push(Object)" because "this.productsInBasket" is null
     public void addProductToBasket(Product product) {
         productsInBasket.push(product);
     }
     public void placeAllProductsOnBand(Queue<Product> band) {
-        while (!productsInBasket.isEmpty()) {
+        while (!productsInBasket.isEmpty() || productsInBasket != null) {
             Product product = productsInBasket.pop();
             band.enqueue(product);
         }
     }
+
+//    TODO:  java.lang.NullPointerException: Cannot invoke "de.tum.in.ase.Stack.push(Object)" because "this.productsInBasket" is null
     public void takeAllProductsFromBand(Queue<Product> band) {
-        while (!band.isEmpty()) {
+        while (!band.isEmpty() || band != null) {
             Product product = band.dequeue();
-            addProductToBasket(product);
+            if (productsInBasket != null) {
+                addProductToBasket(product);
+            }
         }
     }
     public void pay(double amount) {
