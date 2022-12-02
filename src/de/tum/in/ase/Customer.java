@@ -44,14 +44,14 @@ public class Customer {
 
 //    TODO:  java.lang.NullPointerException: Cannot invoke "de.tum.in.ase.Stack.push(Object)" because "this.productsInBasket" is null
     public void takeAllProductsFromBand(Queue<Product> band) {
-        while (!band.isEmpty() || band != null) {
+        while (!band.isEmpty()) {
             Product product = band.dequeue();
             if (productsInBasket != null) {
                 addProductToBasket(product);
             }
         }
     }
-    public void pay(double amount) {
+    public void pay(double amount) throws UnsupportedOperationException {
         if (amount < 0 || money < amount) {
             throw new UnsupportedOperationException();
         } else {
@@ -60,7 +60,6 @@ public class Customer {
     }
     public void goToCheckout(TUMSupermarket supermarket) throws IllegalArgumentException {
         Checkout[] checkouts = supermarket.getCheckouts();
-
         if (supermarket == null || checkouts == null) {
             throw new IllegalArgumentException();
         } else {

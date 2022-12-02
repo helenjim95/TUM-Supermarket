@@ -44,9 +44,13 @@ public class TUMSupermarket {
         }
     }
 
-    public void serveCustomers() {
+    public void serveCustomers() throws UnsupportedOperationException {
         for (Checkout checkout : checkouts) {
-            checkout.serveNextCustomer();
+            try {
+                checkout.serveNextCustomer();
+            } catch (UnsupportedOperationException e) {
+                System.out.println("No customer is waiting");
+            }
         }
     }
 
