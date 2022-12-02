@@ -32,12 +32,12 @@ public class TUMSupermarket {
     }
 
 //    TODO: delete the Checkout-object with the given index
-    public void closeCheckout(int index) {
-        if (index < 0 || index >= checkouts.length) {
+    public void closeCheckout(int index) throws IllegalArgumentException {
+        if (index < 0 || index >= this.checkouts.length) {
             throw new IllegalArgumentException();
         } else {
-            for (int i = index; i < checkouts.length - 1; i++) {
-                checkouts[i] = checkouts[i + 1];
+            for (int i = index; i < this.checkouts.length - 1; i++) {
+                this.checkouts[i] = this.checkouts[i + 1];
             }
 //            the size of the Checkout array must be decreased by 1
 //            (-> there has to be no null-value in it) and
