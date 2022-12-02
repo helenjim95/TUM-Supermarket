@@ -36,7 +36,7 @@ public class Customer {
         productsInBasket.push(product);
     }
     public void placeAllProductsOnBand(Queue<Product> band) {
-        while (!productsInBasket.isEmpty() || productsInBasket != null) {
+        while (!productsInBasket.isEmpty()) {
             Product product = productsInBasket.pop();
             band.enqueue(product);
         }
@@ -60,7 +60,7 @@ public class Customer {
     }
     public void goToCheckout(TUMSupermarket supermarket) throws IllegalArgumentException {
         Checkout[] checkouts = supermarket.getCheckouts();
-        if (supermarket == null || checkouts == null) {
+        if (checkouts == null) {
             throw new IllegalArgumentException();
         } else {
             for (Checkout checkout : checkouts) {
