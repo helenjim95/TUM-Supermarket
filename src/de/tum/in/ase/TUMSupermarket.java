@@ -3,7 +3,7 @@ package de.tum.in.ase;
 public class TUMSupermarket {
     private Checkout [] checkouts;
 
-    public TUMSupermarket(int numberOfCheckouts) {
+    public TUMSupermarket(int numberOfCheckouts) throws IllegalArgumentException {
         if (numberOfCheckouts <= 0) {
             throw new IllegalArgumentException();
         } else {

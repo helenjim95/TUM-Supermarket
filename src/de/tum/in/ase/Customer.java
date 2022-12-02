@@ -6,7 +6,7 @@ public class Customer {
     private String name;
     private double money;
 
-    public Customer(String name, double money) {
+    public Customer(String name, double money) throws IllegalArgumentException {
         if (name == null || money < 0) {
             throw new IllegalArgumentException();
         } else {
@@ -62,18 +62,22 @@ public class Customer {
         }
     }
     public void goToCheckout(TUMSupermarket supermarket) throws IllegalArgumentException {
-        Checkout[] checkouts = supermarket.getCheckouts();
-        if (supermarket == null || checkouts == null) {
+        if (supermarket == null) {
             throw new IllegalArgumentException();
         } else {
-            for (Checkout checkout : checkouts) {
-                if (checkout == null) {
-                    throw new IllegalArgumentException();
+            Checkout[] checkouts = supermarket.getCheckouts();
+            if (checkouts == null) {
+                throw new IllegalArgumentException();
+            } else {
+                for (Checkout checkout : checkouts) {
+                    if (checkout == null) {
+                        throw new IllegalArgumentException();
+                    }
                 }
+                Checkout checkoutWithShortestQueue = supermarket.getCheckoutWithSmallestQueue();
+                Queue<Customer> customers = checkoutWithShortestQueue.getCustomers();
+                customers.enqueue(this);
             }
-            Checkout checkoutWithShortestQueue = supermarket.getCheckoutWithSmallestQueue();
-            Queue<Customer> customers = checkoutWithShortestQueue.getCustomers();
-            customers.enqueue(this);
         }
     }
 
