@@ -41,8 +41,8 @@ public class Checkout {
     }
 
 //    TODO: java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "o" is null
-    public void serveNextCustomer() {
-        if (customerQueueLength() == 0) {
+    public void serveNextCustomer() throws UnsupportedOperationException {
+        if (customerQueueLength() == 0 || customers == null) {
             throw new UnsupportedOperationException();
         } else {
             Customer customer = customers.dequeue();
@@ -59,7 +59,7 @@ public class Checkout {
         }
     }
 
-//    TODO: add toString method
+//    TODO: add toString method, what should it return?
     public String toString() {
         return super.toString();
     }

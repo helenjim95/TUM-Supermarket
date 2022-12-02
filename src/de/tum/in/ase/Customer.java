@@ -27,7 +27,6 @@ public class Customer {
         return productsInBasket;
     }
 
-    //TODO implement methods
     public boolean hasMoney() {
         return money > 0;
     }
@@ -59,14 +58,15 @@ public class Customer {
             money -= amount;
         }
     }
-    public void goToCheckout(TUMSupermarket supermarket) {
+    public void goToCheckout(TUMSupermarket supermarket) throws IllegalArgumentException {
         Checkout[] checkouts = supermarket.getCheckouts();
-        if (checkouts == null) {
-            throw new IllegalStateException();
+
+        if (supermarket == null || checkouts == null) {
+            throw new IllegalArgumentException();
         } else {
             for (Checkout checkout : checkouts) {
                 if (checkout == null) {
-                    throw new IllegalStateException();
+                    throw new IllegalArgumentException();
                 }
             }
             Checkout checkoutWithShortestQueue = supermarket.getCheckoutWithSmallestQueue();
