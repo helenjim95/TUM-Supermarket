@@ -59,13 +59,14 @@ public class Checkout {
             customer.takeAllProductsFromBand(bandBeforeCashier);
             int totalPrice = 0;
             for (int i = 0; i < products.size(); i++) {
-                Product product = (Product) products.pop();
+                Product product = products.pop();
                 totalPrice += product.getPrice();
             }
-//            try {
-            customer.pay(totalPrice);
-//            } catch (UnsupportedOperationException e) {
-//                System.out.println("Customer has insufficient fund");
+            try {
+                customer.pay(totalPrice);
+            } catch (UnsupportedOperationException e) {
+                System.out.println("Customer has insufficient fund");
+            }
         }
     }
 
