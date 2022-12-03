@@ -40,6 +40,12 @@ public class Checkout {
         return customers.size();
     }
 
+    public void enqueueCustomers(Queue<Customer> newCustomers) {
+        while (!customers.isEmpty()) {
+            this.customers.enqueue(newCustomers.dequeue());
+        }
+    }
+
 //    TODO: java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "o" is null
     public void serveNextCustomer() throws UnsupportedOperationException {
         if (customerQueueLength() == 0) {
@@ -49,7 +55,6 @@ public class Checkout {
             Stack<Product> products = customer.getProductsInBasket();
             customer.placeAllProductsOnBand(bandBeforeCashier);
 //            TODO: only put the products customer put (bandAfter - bandBefore)
-            for (int i = 0; i < products.size(); i++) {}
             customer.takeAllProductsFromBand(bandAfterCashier);
             int totalPrice = 0;
             for (int i = 0; i < products.size(); i++) {
@@ -64,8 +69,8 @@ public class Checkout {
         }
     }
 
-//    TODO: add toString method, what should it return?
-    public String toString() {
-        return super.toString();
-    }
+////   add toString method, what should it return?
+//    public String toString() {
+//        return super.toString();
+//    }
 }

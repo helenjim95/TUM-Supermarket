@@ -16,7 +16,9 @@ public class Main {
         }
         Queue<Product> band = new LinkedQueue<>();
         checkout1.serveNextCustomer();
-        supermarket.closeCheckout(5);
+        System.out.println(supermarket.getCheckouts().length);
+        supermarket.closeCheckout(0);
+        System.out.println(supermarket.getCheckouts().length);
     }
 
     protected static Stack<Product> generateProducts(int number) {
