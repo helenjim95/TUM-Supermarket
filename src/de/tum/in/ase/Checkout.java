@@ -46,10 +46,11 @@ public class Checkout {
             throw new UnsupportedOperationException();
         } else {
             Customer customer = customers.dequeue();
-            Stack products = customer.getProductsInBasket();
+            Stack<Product> products = customer.getProductsInBasket();
             customer.placeAllProductsOnBand(bandAfterCashier);
 //            TODO: only put the products customer put (bandAfter - bandBefore)
-            customer.takeAllProductsFromBand(bandAfterCashier);
+            for (int i = 0; i < products.size(); i++) {}
+            customer.takeAllProductsFromBand((Queue<Product>) products);
             int totalPrice = 0;
             for (int i = 0; i < products.size(); i++) {
                 Product product = (Product) products.pop();

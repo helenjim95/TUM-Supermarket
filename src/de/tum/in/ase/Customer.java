@@ -1,7 +1,6 @@
 package de.tum.in.ase;
 
 public class Customer {
-    //TODO Add attribute TsInBasket
     private Stack<Product> productsInBasket;
     private String name;
     private double money;
@@ -47,7 +46,8 @@ public class Customer {
 
 //    TODO:  java.lang.NullPointerException: Cannot invoke "de.tum.in.ase.Stack.push(Object)" because "this.productsInBasket" is null
     public void takeAllProductsFromBand(Queue<Product> band) {
-        while (!band.isEmpty()) {
+//        TODO: only put the products (originally from basket) bach to basket
+        while(!band.isEmpty()) {
             Product product = band.dequeue();
             if (productsInBasket != null) {
                 addProductToBasket(product);
