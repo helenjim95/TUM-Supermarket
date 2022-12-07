@@ -10,10 +10,6 @@ public class Main {
         TUMSupermarket supermarket = new TUMSupermarket(2);
         Customer customer = checkout1.getCustomers().dequeue();
         Stack<Product> productsInBasket = generateProducts(5);
-        while (productsInBasket.size() > 0) {
-            Product product = productsInBasket.pop();
-            customer.addProductToBasket(product);
-        }
         Queue<Product> band = new LinkedQueue<>();
         checkout1.serveNextCustomer();
         System.out.println(supermarket.getCheckouts().length);
@@ -34,6 +30,11 @@ public class Main {
         Queue<Customer> customers = new LinkedQueue<>();
         for (int i = 0; i < number; i++) {
             Customer customer = new Customer("customer" + i, Math.random() * 100);
+            Stack<Product> products = generateProducts(5);
+            while (products.size() > 0) {
+                Product product = products.pop();
+                customer.addProductToBasket(product);
+            }
             customers.enqueue(customer);
         }
         return customers;
