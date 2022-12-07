@@ -47,7 +47,7 @@ public class Checkout {
     }
 
     public void serveNextCustomer() throws UnsupportedOperationException {
-        if (this.customerQueueLength() == 0 || this.customers == null || this.customers.size() == 0) {
+        if (this.customers.size() == 0) {
             throw new UnsupportedOperationException();
         } else {
             Customer customer = this.customers.dequeue();
