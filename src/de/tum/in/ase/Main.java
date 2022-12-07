@@ -4,16 +4,22 @@ public class Main {
 
     public static void main(String[] args) {
         Queue<Customer> customers = generateCustomers(5);
-        Checkout[] checkouts1 = generateCheckouts(5);
+        Checkout[] checkouts1 = generateCheckouts(7);
         Checkout checkout1 = checkouts1[0];
-        Checkout[] checkouts2 = generateCheckouts(2);
-        TUMSupermarket supermarket = new TUMSupermarket(2);
+//        Checkout[] checkouts2 = generateCheckouts(5);
+//        Checkout[] checkouts3 = generateCheckouts(4);
+//        Checkout[] checkouts4 = generateCheckouts(7);
+//        Checkout[] checkouts5 = generateCheckouts(6);
+        TUMSupermarket supermarket = new TUMSupermarket(5);
         Customer customer = checkout1.getCustomers().dequeue();
         Stack<Product> productsInBasket = generateProducts(5);
         Queue<Product> band = new LinkedQueue<>();
-        checkout1.serveNextCustomer();
+//        checkout1.serveNextCustomer();
         System.out.println(supermarket.getCheckouts().length);
-        supermarket.closeCheckout(2);
+        supermarket.closeCheckout(1);
+        System.out.println(supermarket.getCheckouts().toString());
+        supermarket.closeCheckout(3);
+        System.out.println(supermarket.getCheckouts().toString());
         System.out.println(supermarket.getCheckouts().length);
     }
 

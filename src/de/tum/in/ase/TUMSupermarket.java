@@ -40,20 +40,23 @@ public class TUMSupermarket {
             Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
             checkoutWithShortestQueue.enqueueCustomers(removedCheckout.getCustomers());
             int checkoutLength = this.checkouts.length;
-//            TODO: change length to fixed length
-            for (int i = index; i < checkoutLength - 1; i++) {
-                System.out.println("closing" + i + " checkout");
-                this.checkouts[i] = this.checkouts[i + 1];
-                System.out.println("checkout" + i + ": " + this.checkouts[i]);
-                System.out.println("checkout" + (i + 1) + ": " + this.checkouts[i + 1]);
+//            If the index is the last element
+            if (index == checkoutLength - 1) {
+                Checkout [] newCheckouts = new Checkout[checkoutLength - 1];
+                for (int i = 0; i < newCheckouts.length; i++) {
+                    newCheckouts[i] = this.checkouts[i];
+                }
+                this.checkouts = newCheckouts;
+            } else {
+                Checkout [] newCheckouts = new Checkout[checkoutLength - 1];
+                for (int i = 0; i < index; i++) {
+                    newCheckouts[i] = this.checkouts[i];
+                }
+                for (int i = index; i < newCheckouts.length; i++) {
+                    newCheckouts[i] = this.checkouts[i + 1];
+                }
+                this.checkouts = newCheckouts;
             }
-
-            Checkout[] newCheckouts = new Checkout[checkoutLength - 1];
-            for (int i = 0; i < newCheckouts.length; i++) {
-                newCheckouts[i] = this.checkouts[i];
-            }
-            this.checkouts = newCheckouts;
-//            System.out.println(checkouts.toString());
         }
     }
 
