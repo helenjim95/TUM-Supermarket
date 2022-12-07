@@ -39,20 +39,23 @@ public class TUMSupermarket {
             Checkout removedCheckout = this.checkouts[index];
             Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
             checkoutWithShortestQueue.enqueueCustomers(removedCheckout.getCustomers());
+
             for (int i = index; i < this.checkouts.length - 1; i++) {
                 System.out.println("closing" + i + " checkout");
                 this.checkouts[i] = this.checkouts[i + 1];
                 System.out.println("checkout" + i + ": " + this.checkouts[i]);
                 System.out.println("checkout" + (i + 1) + ": " + this.checkouts[i + 1]);
             }
+
+            Checkout[] newCheckouts = new Checkout[this.checkouts.length - 1];
+            for (int i = 0; i < newCheckouts.length; i++) {
+                newCheckouts[i] = this.checkouts[i];
+            }
+            this.checkouts = newCheckouts;
             System.out.println("checkout" + (this.checkouts.length - 1) + ": " + this.checkouts[this.checkouts.length - 1]);
-//            the size of the Checkout array must be decreased by 1
-//            (-> there has to be no null-value in it) and
-//            it should contain all the other Checkout-objects in the same order as before.
-//            Then all Customers from the removed Checkout must go to the next-shortest Queue.
-//            NOTE:Pay attention that the last Customer of the deleted Checkout is the first who leaves the Queue.
         }
     }
+
 
     public void serveCustomers() throws UnsupportedOperationException {
         for (Checkout checkout : checkouts) {
