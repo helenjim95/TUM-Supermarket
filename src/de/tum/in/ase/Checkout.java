@@ -21,7 +21,7 @@ public class Checkout {
     }
 
     public Queue<Product> getBandBeforeCashier() {
-        return bandBeforeCashier;
+        return this.bandBeforeCashier;
     }
 
     public void setBandBeforeCashier(LinkedQueue<Product> bandBeforeCashier) {
@@ -29,7 +29,7 @@ public class Checkout {
     }
 
     public Queue<Product> getBandAfterCashier() {
-        return bandAfterCashier;
+        return this.bandAfterCashier;
     }
 
     public void setBandAfterCashier(LinkedQueue<Product> bandAfterCashier) {
@@ -37,11 +37,11 @@ public class Checkout {
     }
 
     public int customerQueueLength() {
-        return customers.size();
+        return this.customers.size();
     }
 
     public void enqueueCustomers(Queue<Customer> newCustomers) {
-        while (!customers.isEmpty()) {
+        while (!this.customers.isEmpty()) {
             this.customers.enqueue(newCustomers.dequeue());
         }
     }
@@ -50,23 +50,18 @@ public class Checkout {
         if (this.customerQueueLength() == 0 || this.customers == null || this.customers.size() == 0) {
             throw new UnsupportedOperationException();
         } else {
-            Customer customer = customers.dequeue();
-//            TODO: productsInBasket is empty somehow
+            Customer customer = this.customers.dequeue();
             Stack<Product> products = customer.getProductsInBasket();
-            customer.placeAllProductsOnBand(bandBeforeCashier);
+            customer.placeAllProductsOnBand(this.bandBeforeCashier);
 //            TODO: only put the products customer put (bandAfter - bandBefore)
 //            while (bandBeforeCashier.size() > bandBeforeCashier.size())
-            customer.takeAllProductsFromBand(bandBeforeCashier);
+            customer.takeAllProductsFromBand(this.bandBeforeCashier);
             int totalPrice = 0;
             for (int i = 0; i < products.size(); i++) {
                 Product product = products.pop();
                 totalPrice += product.getPrice();
             }
-//            try {
             customer.pay(totalPrice);
-//            } catch (UnsupportedOperationException e) {
-//                System.out.println("Customer has insufficient fund");
-//            }
         }
     }
 }

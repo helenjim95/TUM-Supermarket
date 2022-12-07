@@ -9,20 +9,20 @@ public class TUMSupermarket {
         } else {
             this.checkouts = new Checkout[numberOfCheckouts];
             Checkout checkout = new Checkout();
-            for (int i = 0; i < checkouts.length; i++) {
+            for (int i = 0; i < this.checkouts.length; i++) {
                 this.checkouts[i] = checkout;
             }
         }
     }
 
     public Checkout[] getCheckouts() {
-        return checkouts;
+        return this.checkouts;
     }
 
     public Checkout getCheckoutWithSmallestQueue() {
-        Checkout currentCheckout = checkouts[0];
+        Checkout currentCheckout = this.checkouts[0];
         int smallestQueueSize = currentCheckout.customerQueueLength();
-        for (Checkout checkout : checkouts) {
+        for (Checkout checkout : this.checkouts) {
             if (checkout.customerQueueLength() < smallestQueueSize) {
                 currentCheckout = checkout;
                 smallestQueueSize = checkout.customerQueueLength();
@@ -59,12 +59,8 @@ public class TUMSupermarket {
 
 
     public void serveCustomers() throws UnsupportedOperationException {
-        for (Checkout checkout : checkouts) {
-            try {
+        for (Checkout checkout : this.checkouts) {
                 checkout.serveNextCustomer();
-            } catch (UnsupportedOperationException e) {
-                System.out.println("No customer is waiting");
-            }
         }
     }
 }

@@ -85,6 +85,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer: " + name + ", money: " + money + "\n" + productsInBasket;
+        return "Customer: " + this.name + ", money: " + this.money + "\n" + this.productsInBasket;
     }
 }
