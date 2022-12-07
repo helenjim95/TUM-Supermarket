@@ -39,8 +39,9 @@ public class TUMSupermarket {
             Checkout removedCheckout = this.checkouts[index];
             Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
             checkoutWithShortestQueue.enqueueCustomers(removedCheckout.getCustomers());
-
-            for (int i = index; i < this.checkouts.length - 1; i++) {
+            int checkoutLength = this.checkouts.length;
+//            TODO: change length to fixed length
+            for (int i = index; i < checkoutLength - 1; i++) {
                 System.out.println("closing" + i + " checkout");
                 this.checkouts[i] = this.checkouts[i + 1];
                 System.out.println("checkout" + i + ": " + this.checkouts[i]);
