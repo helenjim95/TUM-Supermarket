@@ -48,7 +48,7 @@ public class TUMSupermarket {
                 System.out.println("checkout" + (i + 1) + ": " + this.checkouts[i + 1]);
             }
 
-            Checkout[] newCheckouts = new Checkout[this.checkouts.length - 1];
+            Checkout[] newCheckouts = new Checkout[checkoutLength - 1];
             for (int i = 0; i < newCheckouts.length; i++) {
                 newCheckouts[i] = this.checkouts[i];
             }
