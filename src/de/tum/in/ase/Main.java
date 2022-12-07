@@ -13,7 +13,7 @@ public class Main {
         Queue<Product> band = new LinkedQueue<>();
         checkout1.serveNextCustomer();
         System.out.println(supermarket.getCheckouts().length);
-        supermarket.closeCheckout(1);
+        supermarket.closeCheckout(2);
         System.out.println(supermarket.getCheckouts().length);
     }
 

@@ -47,7 +47,6 @@ public class Customer {
         }
     }
 
-//    TODO:  java.lang.NullPointerException: Cannot invoke "de.tum.in.ase.Stack.push(Object)" because "this.productsInBasket" is null
     public void takeAllProductsFromBand(Queue<Product> band) {
 //        TODO: only put the products (originally from basket) bach to basket
         while(!band.isEmpty()) {
