@@ -46,12 +46,12 @@ public class Checkout {
         }
     }
 
-//    TODO: java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "o" is null
     public void serveNextCustomer() throws UnsupportedOperationException {
-        if (customerQueueLength() == 0) {
+        if (this.customerQueueLength() == 0 || this.customers == null || this.customers.size() == 0) {
             throw new UnsupportedOperationException();
         } else {
             Customer customer = customers.dequeue();
+//            TODO: productsInBasket is empty somehow
             Stack<Product> products = customer.getProductsInBasket();
             customer.placeAllProductsOnBand(bandBeforeCashier);
 //            TODO: only put the products customer put (bandAfter - bandBefore)
@@ -62,11 +62,11 @@ public class Checkout {
                 Product product = products.pop();
                 totalPrice += product.getPrice();
             }
-            try {
-                customer.pay(totalPrice);
-            } catch (UnsupportedOperationException e) {
-                System.out.println("Customer has insufficient fund");
-            }
+//            try {
+            customer.pay(totalPrice);
+//            } catch (UnsupportedOperationException e) {
+//                System.out.println("Customer has insufficient fund");
+//            }
         }
     }
 }

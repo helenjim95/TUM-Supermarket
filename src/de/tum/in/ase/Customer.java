@@ -16,15 +16,15 @@ public class Customer {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public double getMoney() {
-        return money;
+        return this.money;
     }
 
     public Stack<Product> getProductsInBasket() {
-        return productsInBasket;
+        return this.productsInBasket;
     }
 
     public boolean hasMoney() {
@@ -33,16 +33,16 @@ public class Customer {
 
     public void addProductToBasket(Product product) {
         if (product != null) {
-            if (productsInBasket == null) {
-                productsInBasket = new LinkedStack<>();
+            if (this.productsInBasket == null) {
+                this.productsInBasket = new LinkedStack<>();
             } else {
-                    productsInBasket.push(product);
+                this.productsInBasket.push(product);
             }
         }
     }
     public void placeAllProductsOnBand(Queue<Product> band) {
-        while (!productsInBasket.isEmpty()) {
-            Product product = productsInBasket.pop();
+        while (!this.productsInBasket.isEmpty()) {
+            Product product = this.productsInBasket.pop();
             band.enqueue(product);
         }
     }
@@ -52,8 +52,8 @@ public class Customer {
 //        TODO: only put the products (originally from basket) bach to basket
         while(!band.isEmpty()) {
             Product product = band.dequeue();
-            if (productsInBasket != null) {
-                addProductToBasket(product);
+            if (this.productsInBasket != null) {
+                this.addProductToBasket(product);
             }
         }
     }
