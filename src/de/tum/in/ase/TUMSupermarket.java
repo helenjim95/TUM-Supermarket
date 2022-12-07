@@ -31,7 +31,7 @@ public class TUMSupermarket {
         return currentCheckout;
     }
 
-//    TODO: delete the Checkout-object with the given index
+//    TODO: loop didn't end?
     public void closeCheckout(int index) throws IllegalArgumentException {
         if (index < 0 || index >= this.checkouts.length) {
             throw new IllegalArgumentException();
@@ -52,7 +52,7 @@ public class TUMSupermarket {
                 newCheckouts[i] = this.checkouts[i];
             }
             this.checkouts = newCheckouts;
-            System.out.println("checkout" + (this.checkouts.length - 1) + ": " + this.checkouts[this.checkouts.length - 1]);
+            System.out.println(checkouts.toString());;
         }
     }
 

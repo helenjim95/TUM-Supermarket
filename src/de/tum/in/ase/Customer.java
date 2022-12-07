@@ -31,10 +31,13 @@ public class Customer {
         return money > 0;
     }
 
-    //    TODO:  java.lang.NullPointerException: Cannot invoke "de.tum.in.ase.Stack.push(Object)" because "this.productsInBasket" is null
     public void addProductToBasket(Product product) {
-        if (productsInBasket != null) {
-            productsInBasket.push(product);
+        if (product != null) {
+            if (productsInBasket == null) {
+                productsInBasket = new LinkedStack<>();
+            } else {
+                    productsInBasket.push(product);
+            }
         }
     }
     public void placeAllProductsOnBand(Queue<Product> band) {

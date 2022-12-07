@@ -69,9 +69,4 @@ public class Checkout {
             }
         }
     }
-
-////   add toString method, what should it return?
-//    public String toString() {
-//        return super.toString();
-//    }
 }
