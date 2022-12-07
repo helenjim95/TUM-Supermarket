@@ -53,7 +53,7 @@ public class TUMSupermarket {
                 newCheckouts[i] = this.checkouts[i];
             }
             this.checkouts = newCheckouts;
-            System.out.println(checkouts.toString());;
+//            System.out.println(checkouts.toString());
         }
     }
 
