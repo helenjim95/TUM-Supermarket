@@ -40,7 +40,7 @@ public class TUMSupermarket {
             Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
             checkoutWithShortestQueue.enqueueCustomers(removedCheckout.getCustomers());
             int checkoutLength = this.checkouts.length;
-//            If the index is the last element
+            //            If the index is the last element
             if (index == checkoutLength - 1) {
                 Checkout [] newCheckouts = new Checkout[checkoutLength - 1];
                 for (int i = 0; i < newCheckouts.length; i++) {

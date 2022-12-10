@@ -56,7 +56,7 @@ public class Checkout {
 //            TODO: only put the products customer put (bandAfter - bandBefore)
 //            while (bandBeforeCashier.size() > bandBeforeCashier.size())
             customer.takeAllProductsFromBand(this.bandBeforeCashier);
-            int totalPrice = 0;
+            double totalPrice = 0;
             for (int i = 0; i < products.size(); i++) {
                 Product product = products.pop();
                 totalPrice += product.getPrice();
