@@ -53,9 +53,8 @@ public class Checkout {
             Customer customer = this.customers.dequeue();
             Stack<Product> products = customer.getProductsInBasket();
             customer.placeAllProductsOnBand(this.bandBeforeCashier);
-//            TODO: only put the products customer put (bandAfter - bandBefore)
-//            while (bandBeforeCashier.size() > bandBeforeCashier.size())
-            customer.takeAllProductsFromBand(this.bandBeforeCashier);
+            this.bandAfterCashier = this.bandBeforeCashier;
+            customer.takeAllProductsFromBand(this.bandAfterCashier);
             double totalPrice = 0;
             for (int i = 0; i < products.size(); i++) {
                 Product product = products.pop();

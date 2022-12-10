@@ -1,5 +1,7 @@
 package de.tum.in.ase;
 
+import java.util.Arrays;
+
 public class TUMSupermarket {
     private Checkout [] checkouts;
 
@@ -9,9 +11,7 @@ public class TUMSupermarket {
         } else {
             this.checkouts = new Checkout[numberOfCheckouts];
             Checkout checkout = new Checkout();
-            for (int i = 0; i < this.checkouts.length; i++) {
-                this.checkouts[i] = checkout;
-            }
+            Arrays.fill(this.checkouts, checkout);
         }
     }
 
@@ -33,30 +33,32 @@ public class TUMSupermarket {
 
 //    TODO: loop didn't end?
     public void closeCheckout(int index) throws IllegalArgumentException {
-        if (index < 0 || index >= this.checkouts.length) {
+        int checkoutLength = this.checkouts.length;
+        if (index < 0 || index >= checkoutLength) {
             throw new IllegalArgumentException();
         } else {
             Checkout removedCheckout = this.checkouts[index];
             Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
             checkoutWithShortestQueue.enqueueCustomers(removedCheckout.getCustomers());
-            int checkoutLength = this.checkouts.length;
-            //            If the index is the last element
+            Checkout [] newCheckouts = new Checkout[checkoutLength - 1];
+//            If the index is the last element
             if (index == checkoutLength - 1) {
-                Checkout [] newCheckouts = new Checkout[checkoutLength - 1];
                 for (int i = 0; i < newCheckouts.length; i++) {
                     newCheckouts[i] = this.checkouts[i];
                 }
-                this.checkouts = newCheckouts;
+            } else if (index == 0) {
+                for (int i = 0; i < newCheckouts.length; i++) {
+                    newCheckouts[i] = this.checkouts[i + 1];
+                }
             } else {
-                Checkout [] newCheckouts = new Checkout[checkoutLength - 1];
                 for (int i = 0; i < index; i++) {
                     newCheckouts[i] = this.checkouts[i];
                 }
                 for (int i = index; i < newCheckouts.length; i++) {
                     newCheckouts[i] = this.checkouts[i + 1];
                 }
-                this.checkouts = newCheckouts;
             }
+            this.checkouts = newCheckouts;
         }
     }
 
