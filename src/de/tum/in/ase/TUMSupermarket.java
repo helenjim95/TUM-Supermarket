@@ -31,7 +31,7 @@ public class TUMSupermarket {
         return currentCheckout;
     }
 
-//    TODO: loop didn't end?
+//    TODO: took too long
     public void closeCheckout(int index) throws IllegalArgumentException {
         int checkoutLength = this.checkouts.length;
         if (index < 0 || index >= checkoutLength) {
@@ -43,20 +43,13 @@ public class TUMSupermarket {
             Checkout [] newCheckouts = new Checkout[checkoutLength - 1];
 //            If the index is the last element
             if (index == checkoutLength - 1) {
-                for (int i = 0; i < newCheckouts.length; i++) {
-                    newCheckouts[i] = this.checkouts[i];
-                }
+                System.arraycopy(this.checkouts, 0, newCheckouts, 0, newCheckouts.length);
             } else if (index == 0) {
-                for (int i = 0; i < newCheckouts.length; i++) {
-                    newCheckouts[i] = this.checkouts[i + 1];
-                }
+                System.arraycopy(this.checkouts, 1, newCheckouts, 0, newCheckouts.length);
             } else {
-                for (int i = 0; i < index; i++) {
-                    newCheckouts[i] = this.checkouts[i];
-                }
-                for (int i = index; i < newCheckouts.length; i++) {
-                    newCheckouts[i] = this.checkouts[i + 1];
-                }
+                System.arraycopy(this.checkouts, 0, newCheckouts, 0, index);
+                if (newCheckouts.length - index >= 0)
+                    System.arraycopy(this.checkouts, index + 1, newCheckouts, index, newCheckouts.length - index);
             }
             this.checkouts = newCheckouts;
         }
