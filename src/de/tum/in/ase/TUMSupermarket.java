@@ -1,6 +1,9 @@
 package de.tum.in.ase;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class TUMSupermarket {
     private Checkout [] checkouts;
@@ -40,17 +43,11 @@ public class TUMSupermarket {
             Checkout removedCheckout = this.checkouts[index];
             Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
             checkoutWithShortestQueue.enqueueCustomers(removedCheckout.getCustomers());
-            Checkout [] newCheckouts = new Checkout[checkoutLength - 1];
-//            If the index is the last element
-            if (index == checkoutLength - 1) {
-                System.arraycopy(this.checkouts, 0, newCheckouts, 0, newCheckouts.length);
-            } else if (index == 0) {
-                System.arraycopy(this.checkouts, 1, newCheckouts, 0, newCheckouts.length);
-            } else {
-                System.arraycopy(this.checkouts, 0, newCheckouts, 0, index);
-                if (newCheckouts.length - index >= 0)
-                    System.arraycopy(this.checkouts, index + 1, newCheckouts, index, newCheckouts.length - index);
-            }
+
+            Checkout [] newCheckouts = (Checkout[]) Arrays.stream(this.checkouts)
+                    .filter(checkout -> !checkout.equals(removedCheckout))
+                    .toArray();
+
             this.checkouts = newCheckouts;
         }
     }
