@@ -14,13 +14,14 @@ public class Main {
         Customer customer = checkout1.getCustomers().dequeue();
         Stack<Product> productsInBasket = generateProducts(5);
         Queue<Product> band = new LinkedQueue<>();
-//        checkout1.serveNextCustomer();
-        System.out.println(supermarket.getCheckouts().length);
-        supermarket.closeCheckout(1);
-        System.out.println(supermarket.getCheckouts().toString());
-        supermarket.closeCheckout(3);
-        System.out.println(supermarket.getCheckouts().toString());
-        System.out.println(supermarket.getCheckouts().length);
+        checkout1.serveNextCustomer();
+
+//        System.out.println(supermarket.getCheckouts().length);
+//        supermarket.closeCheckout(0);
+//        System.out.println(supermarket.getCheckouts().toString());
+//        supermarket.closeCheckout(1);
+//        System.out.println(supermarket.getCheckouts().toString());
+//        System.out.println(supermarket.getCheckouts().length);
     }
 
     protected static Stack<Product> generateProducts(int number) {
@@ -35,7 +36,7 @@ public class Main {
     protected static Queue<Customer> generateCustomers(int number) {
         Queue<Customer> customers = new LinkedQueue<>();
         for (int i = 0; i < number; i++) {
-            Customer customer = new Customer("customer" + i, Math.random() * 100);
+            Customer customer = new Customer("customer" + i, Math.random() * 1000);
             Stack<Product> products = generateProducts(5);
             while (products.size() > 0) {
                 Product product = products.pop();

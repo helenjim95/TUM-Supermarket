@@ -57,10 +57,17 @@ public class Customer {
         }
     }
     public void pay(double amount) throws UnsupportedOperationException {
+        System.out.println("Paying:" + amount);
         if (amount < 0 || this.money < amount) {
+//            TODO: need to delete
+            System.out.println("Not enough money");
+            System.out.println("Amount left:" + this.money);
             throw new UnsupportedOperationException();
         } else {
             this.money -= amount;
+//            TODO: need to delete
+
+            System.out.println("Amount left:" + this.money);
         }
     }
     public void goToCheckout(TUMSupermarket supermarket) throws IllegalArgumentException {
