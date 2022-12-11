@@ -46,7 +46,7 @@ public class Checkout {
         }
     }
 
-    public void serveNextCustomer() throws UnsupportedOperationException {
+    public void serveNextCustomer() {
         if (this.customers.size() == 0) {
             throw new UnsupportedOperationException();
         } else {

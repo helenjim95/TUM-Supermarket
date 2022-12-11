@@ -56,7 +56,7 @@ public class Customer {
             }
         }
     }
-    public void pay(double amount) throws UnsupportedOperationException {
+    public void pay(double amount) {
 //        System.out.println("Paying:" + amount);
         if (amount < 0 || this.money < amount) {
 //            TODO: need to delete

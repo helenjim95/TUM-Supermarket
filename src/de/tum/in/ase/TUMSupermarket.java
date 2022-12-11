@@ -43,17 +43,14 @@ public class TUMSupermarket {
             Checkout removedCheckout = this.checkouts[index];
             Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
             checkoutWithShortestQueue.enqueueCustomers(removedCheckout.getCustomers());
-
-            Checkout [] newCheckouts = (Checkout[]) Arrays.stream(this.checkouts)
-                    .filter(checkout -> !checkout.equals(removedCheckout))
-                    .toArray();
-
-            this.checkouts = newCheckouts;
+            this.checkouts = (Checkout[]) Arrays.stream(this.checkouts)
+                                                            .filter(checkout -> !checkout.equals(removedCheckout))
+                                                            .toArray();
         }
     }
 
 
-    public void serveCustomers() throws UnsupportedOperationException {
+    public void serveCustomers() {
         for (Checkout checkout : this.checkouts) {
                 checkout.serveNextCustomer();
         }
