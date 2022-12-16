@@ -41,11 +41,24 @@ public class TUMSupermarket {
             throw new IllegalArgumentException();
         } else {
             Checkout removedCheckout = this.checkouts[index];
-            Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
-            checkoutWithShortestQueue.enqueueCustomers(removedCheckout.getCustomers());
-            this.checkouts = (Checkout[]) Arrays.stream(this.checkouts)
-                                                            .filter(checkout -> !checkout.equals(removedCheckout))
-                                                            .toArray();
+            Checkout[] newCheckouts = new Checkout[checkoutLength - 1];
+            for (int i = 0; i < newCheckouts.length; i++) {
+                int shift = 0;
+                if (i > index) {
+                    shift = 1;
+                }
+                newCheckouts[i] = this.checkouts[i + shift];
+            }
+            this.checkouts = newCheckouts;
+            LinkedStack<Customer> tmp = new LinkedStack<>();
+            while (removedCheckout.getCustomers().size() > 0) {
+                Customer movedCustomer = removedCheckout.getCustomers().dequeue();
+                tmp.push(movedCustomer);
+            }
+            while (tmp.size() > 0) {
+                Checkout checkoutWithShortestQueue = this.getCheckoutWithSmallestQueue();
+               checkoutWithShortestQueue.getCustomers().enqueue(tmp.pop());
+            }
         }
     }
 
