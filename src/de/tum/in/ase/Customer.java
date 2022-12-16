@@ -28,7 +28,7 @@ public class Customer {
     }
 
     public boolean hasMoney() {
-        return money > 0;
+        return this.money > 0;
     }
 
     public void addProductToBasket(Product product) {
@@ -41,19 +41,19 @@ public class Customer {
         }
     }
     public void placeAllProductsOnBand(Queue<Product> band) {
-        while (!this.productsInBasket.isEmpty()) {
-            Product product = this.productsInBasket.pop();
+        Product product = this.productsInBasket.pop();
+        while(product != null) {
             band.enqueue(product);
+            product = this.productsInBasket.pop();
         }
     }
 
     public void takeAllProductsFromBand(Queue<Product> band) {
 //        TODO: only put the products (originally from basket) bach to basket
-        while(!band.isEmpty()) {
-            Product product = band.dequeue();
-            if (this.productsInBasket != null) {
-                this.addProductToBasket(product);
-            }
+        Product product = band.dequeue();
+        while(product != null) {
+            this.productsInBasket.push(product);
+            product = band.dequeue();
         }
     }
     public void pay(double amount) {

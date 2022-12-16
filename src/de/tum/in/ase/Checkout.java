@@ -53,13 +53,14 @@ public class Checkout {
             Customer customer = this.customers.dequeue();
             Stack<Product> products = customer.getProductsInBasket();
             customer.placeAllProductsOnBand(this.bandBeforeCashier);
-            this.bandAfterCashier = this.bandBeforeCashier;
-            customer.takeAllProductsFromBand(this.bandAfterCashier);
+            Product product = this.bandBeforeCashier.dequeue();
             double totalPrice = 0;
-            for (int i = 0; i < products.size(); i++) {
-                Product product = products.pop();
+            while (product != null) {
+                this.bandAfterCashier.enqueue(product);
                 totalPrice += product.getPrice();
+                product = this.bandBeforeCashier.dequeue();
             }
+            customer.takeAllProductsFromBand(this.bandAfterCashier);
             customer.pay(totalPrice);
         }
     }
